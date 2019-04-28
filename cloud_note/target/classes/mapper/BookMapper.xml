@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<!-- namespace命名空间，指定的是Dao -->
+<mapper namespace="com.aiuiot.cloud_note.dao.BookDao">
+	
+	<!-- 根据用户名查询 参数类型:String 返回类型:Notebook-->
+	<select id="findByUserId" parameterType="String" resultType="com.aiuiot.cloud_note.entity.Book">
+		SELECT * FROM cn_notebook WHERE cn_user_id=#{userId} ORDER BY cn_notebook_createtime desc
+	</select>
+	
+	<!-- 新增笔记本 -->
+	<insert id="save" parameterType="com.aiuiot.cloud_note.entity.Book">
+		INSERT INTO cn_notebook(
+			cn_notebook_id,
+			cn_user_id,
+			cn_notebook_name) 
+		VALUES(
+		#{cn_notebook_id},
+		#{cn_user_id},
+		#{cn_notebook_name})
+	</insert>
+	
+</mapper>
