@@ -15,7 +15,7 @@
 	
  <!-- 配置Servlet -->
 	<servlet>
-		<servlet-name>mvc1</servlet-name>
+		<servlet-name>mvc</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class> 
 		<init-param>
 			<!-- 找到Spring配置文件 -->
@@ -27,7 +27,7 @@
 	</servlet>
 	
 	<servlet-mapping> 
-		<servlet-name>mvc1</servlet-name>
+		<servlet-name>mvc</servlet-name>
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
 	

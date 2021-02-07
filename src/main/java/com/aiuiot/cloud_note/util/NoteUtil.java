@@ -8,7 +8,6 @@ public class NoteUtil {
 	
 	/**
 	 * 利用UUID算法生成主键
-	 * @param src
 	 * @return
 	 */
 	public static String createId(){

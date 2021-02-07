@@ -11,11 +11,15 @@ import java.io.Serializable;
  * @version V1.0
  */
 public class NoteResult<T> implements Serializable {
-	private int status; //状态
 
-	private String msg;	//消息
+	/** 状态 */
+	private int status;
 
-	private T data;	//泛型，应之后返回的数据类型不同，此处使用泛型的类型
+	/** 消息 */
+	private String msg;
+
+	/** //泛型，应之后返回的数据类型不同，此处使用泛型的类型 */
+	private T data;
 	
 	public int getStatus() {
 		return status;
