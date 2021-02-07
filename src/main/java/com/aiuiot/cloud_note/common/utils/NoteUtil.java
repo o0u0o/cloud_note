@@ -1,4 +1,4 @@
-package com.aiuiot.cloud_note.util;
+package com.aiuiot.cloud_note.common.utils;
 
 import java.security.MessageDigest;
 import java.util.UUID;

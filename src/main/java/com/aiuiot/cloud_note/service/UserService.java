@@ -2,7 +2,7 @@ package com.aiuiot.cloud_note.service;
 
 
 import com.aiuiot.cloud_note.entity.User;
-import com.aiuiot.cloud_note.util.NoteResult;
+import com.aiuiot.cloud_note.common.utils.NoteResult;
 
 public interface UserService {
 	/**

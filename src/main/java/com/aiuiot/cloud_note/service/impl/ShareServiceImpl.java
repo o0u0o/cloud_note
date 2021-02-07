@@ -14,8 +14,8 @@ import com.aiuiot.cloud_note.dao.NoteDao;
 import com.aiuiot.cloud_note.dao.ShareDao;
 import com.aiuiot.cloud_note.entity.Note;
 import com.aiuiot.cloud_note.entity.Share;
-import com.aiuiot.cloud_note.util.NoteResult;
-import com.aiuiot.cloud_note.util.NoteUtil;
+import com.aiuiot.cloud_note.common.utils.NoteResult;
+import com.aiuiot.cloud_note.common.utils.NoteUtil;
 
 @Service("shareService")
 @Transactional	//
@@ -47,21 +47,13 @@ public class ShareServiceImpl implements ShareService {
 		//模拟异常
 		//String str = null;
 		//str.length();
-		
-		
-		//构建result结果
-		NoteResult<Object> result = new NoteResult<Object>();
-		//给result里的属性赋值
-		result.setStatus(0);
-		result.setMsg("添加分享笔记成功!");
-		return result;
+
+		return NoteResult.successByMsg("添加分享笔记成功!");
 		
 	}
 
+	@Override
 	public NoteResult<List<Share>> searchNote(String keyword, int page) {
-		//构建result
-		NoteResult<List<Share>> result = new NoteResult<List<Share>>();
-
 		String title = "%"+keyword+"%";	//拼接字符串，以实现模糊查询
 		int begin = (page-1)*4;		//计算抓取记录的起点（每页显示3条数据）
 		Map<String,Object> params = new HashMap<String, Object>();
@@ -71,11 +63,7 @@ public class ShareServiceImpl implements ShareService {
 		List<Share> list = shareDao.findLikeTitle(params);
 		
 		//设置返回结果
-		result.setStatus(0);
-		result.setMsg("搜索完成!");
-		result.setData(list);
-		
-		return result;
+		return NoteResult.success(list);
 	}	
 
 }

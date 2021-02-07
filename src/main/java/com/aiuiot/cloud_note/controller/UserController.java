@@ -4,7 +4,7 @@ import com.aiuiot.cloud_note.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.aiuiot.cloud_note.service.UserService;
-import com.aiuiot.cloud_note.util.NoteResult;
+import com.aiuiot.cloud_note.common.utils.NoteResult;
 import org.springframework.web.bind.annotation.RestController;
 
 /**

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.aiuiot.cloud_note.entity.Share;
 import com.aiuiot.cloud_note.service.ShareService;
-import com.aiuiot.cloud_note.util.NoteResult;
+import com.aiuiot.cloud_note.common.utils.NoteResult;
 
 @Controller
 @RequestMapping("/share")
@@ -21,8 +21,7 @@ public class ShareSearchController {
 	public NoteResult<List<Share>> search(String keyword, int page){
 		System.out.println("ShareSearchController方法执行了");
 		System.out.println("keyword:"+keyword);
-		NoteResult<List<Share>> result = shareService.searchNote(keyword, page);
-		return result;
+		return shareService.searchNote(keyword, page);
 	}
 	
 }

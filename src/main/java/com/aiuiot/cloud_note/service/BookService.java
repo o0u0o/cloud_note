@@ -3,7 +3,7 @@ package com.aiuiot.cloud_note.service;
 import java.util.List;
 
 import com.aiuiot.cloud_note.entity.Book;
-import com.aiuiot.cloud_note.util.NoteResult;
+import com.aiuiot.cloud_note.common.utils.NoteResult;
 
 public interface BookService {
 	public NoteResult<List<Book>> LoadUserBooks(String userId);

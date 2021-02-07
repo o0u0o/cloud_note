@@ -5,7 +5,7 @@ import javax.annotation.Resource;
 import com.aiuiot.cloud_note.entity.Note;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.aiuiot.cloud_note.service.NoteService;
-import com.aiuiot.cloud_note.util.NoteResult;
+import com.aiuiot.cloud_note.common.utils.NoteResult;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;

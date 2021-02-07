@@ -5,7 +5,7 @@ import javax.annotation.Resource;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.aiuiot.cloud_note.service.ShareService;
-import com.aiuiot.cloud_note.util.NoteResult;
+import com.aiuiot.cloud_note.common.utils.NoteResult;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController

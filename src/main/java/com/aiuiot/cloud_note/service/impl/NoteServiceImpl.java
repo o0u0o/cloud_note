@@ -5,14 +5,15 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import com.aiuiot.cloud_note.common.enums.ResponseEnum;
 import com.aiuiot.cloud_note.service.NoteService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.aiuiot.cloud_note.dao.NoteDao;
 import com.aiuiot.cloud_note.entity.Note;
-import com.aiuiot.cloud_note.util.NoteResult;
-import com.aiuiot.cloud_note.util.NoteUtil;
+import com.aiuiot.cloud_note.common.utils.NoteResult;
+import com.aiuiot.cloud_note.common.utils.NoteUtil;
 
 @Service("noteService")	//添加@Service纳入Spring容器管理
 public class NoteServiceImpl implements NoteService {
@@ -23,9 +24,8 @@ public class NoteServiceImpl implements NoteService {
 	/**
 	 * 根据userId查询笔记列表
 	 */
+	@Override
 	public NoteResult<List<Map>> LoadBookNotes(String userId) {
-		//构建返回结果，后面使用
-		NoteResult<List<Map>> result = new NoteResult<List<Map>>();
 		//调用Dao得方法得到结果
 		List<Map> list = noteDao.findByBookId(userId);
 		
@@ -34,33 +34,24 @@ public class NoteServiceImpl implements NoteService {
 //			result.setMsg("加载笔记错误");
 //			return result;
 //		}
-		
-		result.setStatus(0);
-		result.setMsg("加载笔记成功");
-		result.setData(list);
-		return result;
+
+		return NoteResult.success(list, "加载笔记成功");
 	}
 
 	
+	@Override
 	public NoteResult<Note> loadNote(String noteId) {
-		NoteResult<Note> result = new NoteResult<Note>();
 		Note note = noteDao.findByNoteId(noteId);
 		if(note == null) {
-			result.setStatus(1);
-			result.setMsg("未找到数据！");
-			return result;
-		}else {
-			result.setStatus(0);
-			result.setMsg("加载笔记信息成功");
-			result.setData(note);			
-			return result;
+			return NoteResult.error(ResponseEnum.ERROR, "未找到数据！");
 		}
+
+		return NoteResult.success(note, "加载笔记信息成功");
 	}
 
-	@Transactional	//用户管理事务 
+	@Override
+	@Transactional	//用户管理事务
 	public NoteResult<Object> updateNote(String noteId, String title, String body) {
-		//构建NoteResult
-		NoteResult<Object> result = new NoteResult<Object>();
 		//创建note参数
 		Note note = new Note();
 		note.setCn_note_id(noteId);
@@ -71,22 +62,16 @@ public class NoteServiceImpl implements NoteService {
 		//更新数据库记录(返回rows，影响多少行？)
 		int rows = noteDao.updateNote(note);
 		if(rows == 1) {	//如果影响了一行记录
-			result.setStatus(0);
-			result.setMsg("保存笔记成功");
-			return result;
+			return NoteResult.successByMsg("保存笔记成功");
 		}else {
-			result.setStatus(1);
-			result.setMsg("保存笔记失败");
-			return result;			
+			return NoteResult.error(ResponseEnum.ERROR, "保存笔记失败");
 		}
 		
 	}
 
 
+	@Override
 	public NoteResult<Note> addNote(String title, String userId, String bookId) {
-		//构建结果
-		NoteResult<Note> result = new NoteResult<Note>();
-		
 		//实例化note，并设置参数
 		Note note = new Note();
 		String statusId = "1";	//默认为1-正常 
@@ -105,29 +90,23 @@ public class NoteServiceImpl implements NoteService {
 		note.setCn_note_type_id("1");	//类型1-normal 2-favor（收藏） 3-share（分享）
 	
 		noteDao.save(note);
-		result.setStatus(0);
-		result.setMsg("新增笔记成功");
-		result.setData(note);
-		return result;
+
+		return NoteResult.success(note, "新增笔记成功");
 	}
 
 
+	@Override
 	public NoteResult<Object> deleteNote(String noteId) {
-		//创建result
-		NoteResult<Object> result = new NoteResult<Object>();
 		int row = noteDao.delete(noteId);
 		if(row == 1) {
-			result.setStatus(0);
-			result.setMsg("删除笔记成功!");
-			return result;
-		}else {
-			result.setStatus(1);
-			result.setMsg("更新笔记成功!");
-			return result;
+			return NoteResult.success("删除笔记成功!");
 		}
+
+		return NoteResult.successByMsg("更新笔记成功!");
 	}
 
 	@Transactional //加上事务管理注解
+	@Override
 	public void deleteNotes(String... ids) {
 		//String... 就是 String[]
 		for (String id : ids) {
