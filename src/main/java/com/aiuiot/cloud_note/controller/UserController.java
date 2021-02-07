@@ -1,8 +1,7 @@
 package com.aiuiot.cloud_note.controller;
 
-import javax.annotation.Resource;
-
 import com.aiuiot.cloud_note.entity.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.aiuiot.cloud_note.service.UserService;
 import com.aiuiot.cloud_note.util.NoteResult;
@@ -17,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
 	//声明userService对象
-	@Resource
+	@Autowired
 	private UserService userService;
 
 	/**

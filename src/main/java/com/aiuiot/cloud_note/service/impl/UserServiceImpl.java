@@ -23,6 +23,7 @@ public class UserServiceImpl implements UserService {
 	 * 模块功能-1: 用户登录
 	 */
 	//实现checkLogin方法
+	@Override
 	public NoteResult<User> checkLogin(String name, String password) {
 		//接收结果数据
 		NoteResult<User> result = new NoteResult<User>();

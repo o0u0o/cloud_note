@@ -18,7 +18,7 @@ public class NoteResult<T> implements Serializable {
 	/** 消息 */
 	private String msg;
 
-	/** //泛型，应之后返回的数据类型不同，此处使用泛型的类型 */
+	/** 泛型，应之后返回的数据类型不同，此处使用泛型的类型 */
 	private T data;
 	
 	public int getStatus() {

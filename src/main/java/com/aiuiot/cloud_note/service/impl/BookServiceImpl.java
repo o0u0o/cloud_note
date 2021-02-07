@@ -18,7 +18,12 @@ public class BookServiceImpl implements BookService {
 	@Resource	//注入dao的对象
 	private BookDao notebookDao;
 
-	//加载用户的笔记本
+	/**
+	 * 加载用户的笔记本
+	 * @param userId
+	 * @return
+	 */
+	@Override
 	public NoteResult<List<Book>> LoadUserBooks(String userId) {
 		
 		//构建返回结果
@@ -42,7 +47,13 @@ public class BookServiceImpl implements BookService {
 		return result;
 	}
 
-	//新增用户的笔记本
+	/**
+	 * 新增笔记本
+	 * @param userId
+	 * @param bookName
+	 * @return
+	 */
+	@Override
 	public NoteResult<Object> addBook(String userId, String bookName) {
 		//实例化result，用于接收结果集
 		NoteResult<Object> result = new NoteResult<Object>();

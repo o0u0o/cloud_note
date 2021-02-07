@@ -5,7 +5,12 @@ import com.aiuiot.cloud_note.entity.User;
 import com.aiuiot.cloud_note.util.NoteResult;
 
 public interface UserService {
-	//检查登录
+	/**
+	 * 检查登录
+	 * @param name
+	 * @param password
+	 * @return
+	 */
 	public NoteResult<User> checkLogin(String name, String password);
 	
 	//添加用户
