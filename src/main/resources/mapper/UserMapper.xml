@@ -6,7 +6,12 @@
 	
 	<!-- 登录 指定id、参数类型、结果类型 -->
 	<select id="findByName" parameterType="String" resultType="com.aiuiot.cloud_note.entity.User">
-		SELECT * FROM cn_user WHERE cn_user_name=#{name}
+		SELECT
+			*
+		FROM
+			cn_user
+		WHERE
+			cn_user_name = #{name}
 	</select>
 	
 	<!-- 注册 指定id、参数类型 -->
@@ -27,11 +32,21 @@
 	
 	<!-- 根据用户ID查询 -->
 	<select id="findByUserId" parameterType="String" resultType="com.aiuiot.cloud_note.entity.User">
-		SELECT * FROM cn_user WHERE cn_user_id=#{userId}
+		SELECT
+			*
+		FROM
+			cn_user
+		WHERE
+			cn_user_id = #{userId}
 	</select>
 	
 	<!-- 根据用户名修改密码 -->
 	<update id="updatePassword">
-		UPDATE cn_user SET cn_user_password=#{cn_user_password} WHERE cn_user_id=#{cn_user_id}
+		UPDATE
+			cn_user
+		SET
+			cn_user_password = #{cn_user_password}
+		WHERE
+			cn_user_id = #{cn_user_id}
 	</update>
 </mapper>
