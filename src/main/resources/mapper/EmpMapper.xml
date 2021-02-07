@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" ?>  
-<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
- "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- MySQL:数据库自动生成主键，获取主键值方法对象的ID属性中， -->
 <mapper namespace="com.aiuiot.cloud_note.dao.EmpDao">
 	<!-- 新增员工 设置useGeneratedKeys为"true"和keyProperty属性指定到ID主键-->
