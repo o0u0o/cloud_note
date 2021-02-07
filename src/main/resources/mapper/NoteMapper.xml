@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<!-- namespace命名空间，指定的是noteDao -->
+<mapper namespace="com.aiuiot.cloud_note.dao.NoteDao">
+	
+	<!-- 登录 指定id、参数类型:String、结果类型:Map -->
+	<select id="findByBookId" parameterType="String" resultType="Map">
+		SELECT cn_note_id,cn_note_title 
+				FROM cn_note 
+				WHERE cn_notebook_id=#{bookId} and cn_note_status_id='1'
+	</select>
+	
+	<!--  -->
+	<select id="findByNoteId" parameterType="String" resultType="com.aiuiot.cloud_note.entity.Note">
+		SELECT * FROM cn_note WHERE cn_note_id=#{noteId}
+	</select>
+	
+	<!-- 保存更新 -->
+	<update id="updateNote" parameterType="com.aiuiot.cloud_note.entity.Note">
+		UPDATE cn_note SET 
+		cn_note_title=#{cn_note_title},
+		cn_note_body=#{cn_note_body},
+		cn_note_last_modify_time=#{cn_note_last_modify_time} 
+		WHERE 
+		cn_note_id=#{cn_note_id}
+	</update>
+	
+	<!-- 新增笔记 -->
+	<insert id="save" parameterType="com.aiuiot.cloud_note.entity.Note">
+		INSERT INTO 
+			cn_note(
+				cn_note_id,
+				cn_notebook_id,
+				cn_user_id,
+				cn_note_status_id,
+				cn_note_type_id,
+				cn_note_title,
+				cn_note_body,
+				cn_note_create_time,
+				cn_note_last_modify_time) 
+			VALUES(
+				#{cn_note_id},
+				#{cn_notebook_id},
+				#{cn_user_id},
+				#{cn_note_status_id},
+				#{cn_note_type_id},
+				#{cn_note_title},
+				#{cn_note_body},
+				#{cn_note_create_time},
+				#{cn_note_last_modify_time})
+	</insert>
+	
+	<!-- 动态SQL查询-保存更新 -->
+	<update id="updateNoteByMap" parameterType="map">
+		update 
+			cn_note
+		set 
+			<trim suffixOverrides=", ">
+				<if test="title!=null">
+					cn_note_title=#{title} ,
+				</if>
+				<if test="body!=null">
+					cn_note_body=#{body} , 
+				</if>
+				<choose>
+					<when test="time!=null">
+						cn_note_last_modify_time=#{time}
+					</when>
+					<otherwise>
+						cn_note_last_modify_time=unix_timestamp() ,
+					</otherwise>
+				</choose>
+			</trim>			
+		where 
+		cn_note_id = #{noteId}
+	</update>
+	
+	<!-- 删除笔记 -->
+	<update id="delete" parameterType="String">
+		UPDATE cn_note SET cn_note_status_id=2 WHERE cn_note_id=#{cn_note_id}
+	</update>
+	
+	<!-- 批量删除笔记 -->
+	<delete id="deleteNotes" parameterType="map">
+		delete from cn_note 
+		<where>
+				<if test="status!=null">
+					cn_note_status_id=#{status} and 
+				</if>
+				cn_note_id in 
+				<foreach collection="ids" item="id" open="(" separator="," close=")">
+					#{id}
+				</foreach>
+		</where>
+	</delete>
+	
+	<delete id="deleteNote" parameterType="String">
+		DELETE FROM 
+			cn_note 
+		WHERE 
+			cn_note_id = #{id}
+	</delete>
+	
+<!-- 	<update id="deleteNotes" parameterType="map">
+		UPDATE cn_note SET  
+		<if test="status!=null">
+			cn_note_status_id=#{status} and 
+		</if> 
+		cn_note_id IN 
+		<foreach collection="ids" item="id" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</update> -->
+	
+</mapper>
