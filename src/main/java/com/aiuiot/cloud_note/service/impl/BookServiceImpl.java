@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import com.aiuiot.cloud_note.common.enums.ResponseEnum;
+import com.aiuiot.cloud_note.common.utils.IdUtils;
 import com.aiuiot.cloud_note.service.BookService;
 import org.springframework.stereotype.Service;
 
@@ -50,11 +51,11 @@ public class BookServiceImpl implements BookService {
 
 		//新增一个笔记本
 		Book book = new Book();
-		String uuid = NoteUtil.createId();
+		String bookId = IdUtils.getIdStr();
 		//给属性赋值
 		book.setCn_user_id(userId);
 		book.setCn_notebook_name(bookName);
-		book.setCn_notebook_id(uuid);
+		book.setCn_notebook_id(bookId);
 		notebookDao.save(book);
 
 		return NoteResult.successByMsg("新增笔记本成功");

@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import com.aiuiot.cloud_note.common.utils.IdUtils;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -39,12 +40,15 @@ public class TestBookDao extends TestBase{
 			System.out.println("用户不存在");
 		}
 	}
-	
-	@Test	//测试用例-2 测试新增笔记本
+
+	/**
+	 * 测试用例-2 测试新增笔记本
+	 */
+	@Test
 	public void test2() {
-		String bookId = "0000015c-09fe-4eaa-aeb5-0000000";
-		String userId = "0c9f285aa2ea47238aea1312e0f2e747";
-		String bookName = "回忆录";
+		String bookId = IdUtils.getIdStr();
+		String userId = IdUtils.getIdStr();
+		String bookName = "回忆录2";
 
 		Book book = new Book();
 		book.setCn_notebook_id(bookId);

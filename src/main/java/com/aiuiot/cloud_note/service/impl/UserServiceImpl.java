@@ -3,6 +3,7 @@ package com.aiuiot.cloud_note.service.impl;
 import javax.annotation.Resource;
 
 import com.aiuiot.cloud_note.common.enums.ResponseEnum;
+import com.aiuiot.cloud_note.common.utils.IdUtils;
 import com.aiuiot.cloud_note.service.UserService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -60,12 +61,12 @@ public class UserServiceImpl implements UserService {
 		
 		//添加用户
 		User user = new User();		//创建一个user对象
-		String uuid = NoteUtil.createId();		//生成ID
-		System.out.println("生成的ID:"+NoteUtil.md5(uuid));
+		Long userId = IdUtils.getId();		//生成ID
+		System.out.println("生成的ID:"+NoteUtil.md5(String.valueOf(userId)));
 		String md5Password = NoteUtil.md5(password);	//使用MD5加密密码
 		
 		//给user的属性赋值
-		user.setCn_user_id(uuid);	//使用uuid配合MD5生成用户ID并设置
+		user.setCn_user_id(userId);	//使用uuid配合MD5生成用户ID并设置
 		user.setCn_user_name(name);	//设置用户名
 		user.setCn_user_password(md5Password);	//设置密码
 		user.setCn_user_nick(nick);	//设置昵称

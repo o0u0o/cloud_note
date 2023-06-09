@@ -1,6 +1,7 @@
 package test.dao;
 
 
+import com.aiuiot.cloud_note.common.utils.IdUtils;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -47,7 +48,7 @@ public class TestUserDao extends TestBase {
 	public void testSave() {
 		//实例化user对象，模拟测试数据
 		User user = new User();
-		user.setCn_user_id("10086");
+		user.setCn_user_id(IdUtils.getId());
 		user.setCn_user_name("ppx");
 		user.setCn_user_nick("皮皮虾");
 		user.setCn_user_password("ppx1234");

@@ -8,7 +8,7 @@ import java.util.List;
  *
  */
 public class User implements Serializable {
-	private String cn_user_id;			//用户ID
+	private Long cn_user_id;			//用户ID
 	private String cn_user_name;		//用户名
 	private String cn_user_password;	//密码
 	private String cn_user_token;		//令牌
@@ -17,11 +17,11 @@ public class User implements Serializable {
 	private List<Book> books;			//笔记本
 	
 
-	public String getCn_user_id() {
+	public Long getCn_user_id() {
 		return cn_user_id;
 	}
 
-	public void setCn_user_id(String cn_user_id) {
+	public void setCn_user_id(Long cn_user_id) {
 		this.cn_user_id = cn_user_id;
 	}
 
