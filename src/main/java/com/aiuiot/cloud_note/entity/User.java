@@ -1,5 +1,10 @@
 package com.aiuiot.cloud_note.entity;
 
+
+
+import lombok.Getter;
+import lombok.Setter;
+
 import java.io.Serializable;
 import java.util.List;
 /**
@@ -7,15 +12,17 @@ import java.util.List;
  * @author aiuiot
  *
  */
+@Getter
+@Setter
 public class User implements Serializable {
 	private Long cn_user_id;			//用户ID
 	private String cn_user_name;		//用户名
 	private String cn_user_password;	//密码
 	private String cn_user_token;		//令牌
 	private String cn_user_nick;		//昵称
-	
+
 	private List<Book> books;			//笔记本
-	
+
 
 	public Long getCn_user_id() {
 		return cn_user_id;
@@ -71,6 +78,6 @@ public class User implements Serializable {
 				+ cn_user_password + ", cn_user_token=" + cn_user_token + ", cn_user_nick=" + cn_user_nick + ", books="
 				+ books + "]";
 	}
-	
+
 
 }
