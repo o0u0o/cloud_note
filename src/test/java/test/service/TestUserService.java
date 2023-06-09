@@ -5,12 +5,10 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.stereotype.Repository;
 
 import com.aiuiot.cloud_note.entity.User;
 import com.aiuiot.cloud_note.service.UserService;
-import com.aiuiot.cloud_note.util.NoteResult;
-import com.aiuiot.cloud_note.util.NoteUtil;
+import com.aiuiot.cloud_note.common.utils.NoteResult;
 
 public class TestUserService {
 	private UserService service;

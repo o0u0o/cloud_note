@@ -8,7 +8,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.aiuiot.cloud_note.dao.UserDao;
 import com.aiuiot.cloud_note.entity.User;
-import com.aiuiot.cloud_note.util.NoteUtil;
+import com.aiuiot.cloud_note.common.utils.NoteUtil;
 
 import test.TestBase;
 

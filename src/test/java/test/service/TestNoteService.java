@@ -10,7 +10,7 @@ import org.junit.Test;
 
 import com.aiuiot.cloud_note.entity.Note;
 import com.aiuiot.cloud_note.service.NoteService;
-import com.aiuiot.cloud_note.util.NoteResult;
+import com.aiuiot.cloud_note.common.utils.NoteResult;
 
 import test.TestBase;
 

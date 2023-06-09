@@ -5,9 +5,14 @@
 	
 	<!-- 登录 指定id、参数类型:String、结果类型:Map -->
 	<select id="findByBookId" parameterType="String" resultType="Map">
-		SELECT cn_note_id,cn_note_title 
-				FROM cn_note 
-				WHERE cn_notebook_id=#{bookId} and cn_note_status_id='1'
+		SELECT
+			cn_note_id,cn_note_title
+		FROM
+			cn_note
+		WHERE
+			cn_notebook_id=#{bookId}
+		and
+			cn_note_status_id='1'
 	</select>
 	
 	<!--  -->

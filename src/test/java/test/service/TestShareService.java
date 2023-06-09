@@ -9,7 +9,7 @@ import org.junit.Test;
 
 import com.aiuiot.cloud_note.entity.Share;
 import com.aiuiot.cloud_note.service.ShareService;
-import com.aiuiot.cloud_note.util.NoteResult;
+import com.aiuiot.cloud_note.common.utils.NoteResult;
 
 import test.TestBase;
 

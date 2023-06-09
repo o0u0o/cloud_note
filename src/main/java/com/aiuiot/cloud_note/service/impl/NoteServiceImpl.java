@@ -29,11 +29,9 @@ public class NoteServiceImpl implements NoteService {
 		//调用Dao得方法得到结果
 		List<Map> list = noteDao.findByBookId(userId);
 		
-//		if(list.isEmpty()) {
-//			result.setStatus(1);
-//			result.setMsg("加载笔记错误");
-//			return result;
-//		}
+		if(list.isEmpty()) {
+			return NoteResult.error(ResponseEnum.ERROR, "加载笔记错误");
+		}
 
 		return NoteResult.success(list, "加载笔记成功");
 	}
