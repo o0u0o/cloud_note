@@ -82,7 +82,7 @@
 	
 	<!-- 删除笔记 -->
 	<update id="delete" parameterType="String">
-		UPDATE cn_note SET cn_note_status_id=2 WHERE cn_note_id=#{cn_note_id}
+		UPDATE cn_note SET cn_note_status_id = 2 WHERE cn_note_id=#{cn_note_id}
 	</update>
 	
 	<!-- 批量删除笔记 -->

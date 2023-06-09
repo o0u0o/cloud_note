@@ -12,8 +12,14 @@ public interface UserService {
 	 * @return
 	 */
 	public NoteResult<User> checkLogin(String name, String password);
-	
-	//添加用户
+
+	/**
+	 * 添加用户
+	 * @param name
+	 * @param password
+	 * @param nick
+	 * @return
+	 */
 	public NoteResult<Object> addUser(String name, String password, String nick);
 
 	/**

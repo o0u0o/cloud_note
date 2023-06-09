@@ -28,7 +28,7 @@ public class TestBookDao extends TestBase{
 		if(notebook != null) {
 			for (Book n : notebook) {
 				//System.out.println(n.getCn_notebook_id()+" "+n.getCn_user_id());
-				String notebook_id = n.getCn_notebook_id();
+				Long notebook_id = n.getCn_notebook_id();
 				String user_id = n.getCn_user_id();
 				String notebook_type_id = n.getCn_notebook_type_id();
 				String notebook_name = n.getCn_notebook_name();
@@ -46,7 +46,7 @@ public class TestBookDao extends TestBase{
 	 */
 	@Test
 	public void test2() {
-		String bookId = IdUtils.getIdStr();
+		Long bookId = IdUtils.getId();
 		String userId = IdUtils.getIdStr();
 		String bookName = "回忆录2";
 

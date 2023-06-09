@@ -1,11 +1,13 @@
 package com.aiuiot.cloud_note.controller;
 
 import com.aiuiot.cloud_note.entity.User;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.aiuiot.cloud_note.service.UserService;
 import com.aiuiot.cloud_note.common.utils.NoteResult;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.Resource;
 
 /**
  * @author aiuiot
@@ -16,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
 	//声明userService对象
-	@Autowired
+	@Resource
 	private UserService userService;
 
 	/**
@@ -42,6 +44,7 @@ public class UserController {
 	@RequestMapping("/login.do")
 	public NoteResult<User> login(String name, String password) {
 		System.out.println(name+" "+password);
+
 		//调用userService处理登录请求
 		NoteResult<User> result = userService.checkLogin(name, password);
 		return result;

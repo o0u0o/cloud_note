@@ -14,5 +14,12 @@ public interface BookService {
 	 * @param bookName
 	 * @return
 	 */
-	public NoteResult<Object> addBook(String userId,String bookName);	//新增笔记本
+	NoteResult<Object> addBook(String userId, String bookName);	//新增笔记本
+
+	/**
+	 * <h2>删除笔记本</h2>
+	 * @param bookId
+	 * @return
+	 */
+	NoteResult<Object> delBook(Long bookId);
 }

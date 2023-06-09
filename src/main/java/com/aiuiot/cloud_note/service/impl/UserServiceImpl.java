@@ -34,8 +34,8 @@ public class UserServiceImpl implements UserService {
 			return NoteResult.error(ResponseEnum.USERNAME_NOT_EXIST);
 		}
 		
-		//检查密码
-		String md5Password = NoteUtil.md5(password);	//使用md5加密密码
+		//检查密码:使用md5加密密码
+		String md5Password = NoteUtil.md5(password);
 		if(!user.getCn_user_password().equals(md5Password)) {
 			return NoteResult.error(ResponseEnum.PASSWORD_ERROR);
 		}

@@ -19,5 +19,11 @@
 		#{cn_user_id},
 		#{cn_notebook_name})
 	</insert>
+
+	<!-- 根据id删除笔记本	-->
+	<delete id="remove" parameterType="Long">
+		DELETE FROM cn_notebook WHERE cn_notebook_id=#{bookId}
+	</delete>
+
 	
 </mapper>
